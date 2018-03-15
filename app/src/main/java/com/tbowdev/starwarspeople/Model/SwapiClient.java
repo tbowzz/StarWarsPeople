@@ -25,6 +25,7 @@ import okhttp3.Response;
 public class SwapiClient {
 
     private static final String TAG = "SwapiClient";
+    private static final String SERVER_URL = "http://10.0.0.100:58558/";
 
     public static void queryAllPeople() {
 
@@ -64,6 +65,6 @@ public class SwapiClient {
             }
         }).build();
         // running local instance of graphQL swapi from https://github.com/graphql/swapi-graphql
-        return ApolloClient.builder().serverUrl("http://10.0.0.100:58558/").okHttpClient(okHttpClient).build();
+        return ApolloClient.builder().serverUrl(SERVER_URL).okHttpClient(okHttpClient).build();
     }
 }
