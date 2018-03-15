@@ -2,6 +2,22 @@ query allPeopleQuery {
   allPeople {
     people {
       name
+      gender
+      homeworld {
+          name
+      }
+      filmConnection {
+        edges {
+          node {
+            title
+            episodeID
+          }
+        }
+        films {
+          title
+          episodeID
+        }
+      }
     }
   }
 }

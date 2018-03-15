@@ -117,19 +117,44 @@ public class MainActivity extends AppCompatActivity implements Observer {
         AllPeopleQuery.person holderPerson;
 
         TextView name;
+        TextView gender;
+        TextView homeWorld;
+        TextView inFilms;
 
         PersonHolder(View itemView)
         {
             super(itemView);
 
             name = (TextView) itemView.findViewById(R.id.name);
+            gender = (TextView) itemView.findViewById(R.id.gender);
+            homeWorld = (TextView) itemView.findViewById(R.id.home_world);
+            inFilms = (TextView) itemView.findViewById(R.id.films);
         }
 
         void bindPerson(AllPeopleQuery.person person)
         {
             holderPerson = person;
 
-            this.name.setText(holderPerson.name());
+            name.setText(holderPerson.name());
+            gender.setText(holderPerson.gender());
+            homeWorld.setText(holderPerson.homeworld().name());
+            String films = formatFilmString(holderPerson.filmConnection().edges());
+            inFilms.setText(films);
+        }
+
+        private String formatFilmString(List<AllPeopleQuery.Edge> films) {
+            if (films == null) {
+                return "Not in any films.";
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < films.size(); i++) {
+                sb.append(films.get(i).node().episodeID());
+                if (i != films.size() - 1) {
+                    sb.append(", ");
+                }
+            }
+            return sb.toString();
         }
     }
 }

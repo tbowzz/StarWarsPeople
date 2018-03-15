@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Star Wars People</string>
+
+    <string name="gender">Gender:&#160;</string>
+    <string name="home_world">Home World:&#160;</string>
+    <string name="starred_in_films">In Films:&#160;</string>
 </resources>
